@@ -34,7 +34,7 @@
 ```
 ProjectAI/
 ├── addons/
-│   └── godot_core_system/     # 核心系统插件
+│   └── godot_core_system/     # 核心系统(已封装，尽量避免修改)
 ├── scenes/                    # 场景文件
 ├── scripts/                   # 脚本文件
 │   ├── game_flow_machine.gd   # 游戏流程状态机

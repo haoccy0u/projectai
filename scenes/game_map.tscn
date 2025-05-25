@@ -14,3 +14,11 @@ metadata/_custom_type_script = "uid://cvqnsi7jivgi7"
 [node name="PlayerUI" parent="UIManager" instance=ExtResource("3_lp764")]
 z_index = 100
 metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="UIManager"]
+offset_left = 912.0
+offset_top = 502.0
+offset_right = 998.0
+offset_bottom = 588.0
+text = "1"
+metadata/_edit_use_anchors_ = true

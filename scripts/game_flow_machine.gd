@@ -56,6 +56,7 @@ class GameState extends BaseStateMachine:
 		add_state(&"map", MapState.new())
 		add_state(&"explore", ExploreState.new())
 		add_state(&"dialog", DialogState.new())
+		add_state(&"endday", EndDayState.new())
 		CoreSystem.logger.info("游戏状态初始化完成")
 	
 	func _enter(_msg := {}) -> void:
@@ -82,6 +83,8 @@ class GameState extends BaseStateMachine:
 	class MapState extends BaseState:
 		func _enter(msg := {}) -> void:
 			CoreSystem.logger.info("进入地图状态")
+			# 订阅对话状态切换事件
+			CoreSystem.event_bus.subscribe("switch_to_dialogue", _on_switch_to_dialogue)
 			# 根据传入的参数决定过渡效果
 			var transition_effect = msg.get("transition_effect", CoreSystem.SceneManager.TransitionEffect.FADE)
 			# 切换到地图场景，保存到栈
@@ -91,6 +94,13 @@ class GameState extends BaseStateMachine:
 				true,  # 保存到栈
 				transition_effect
 			)
+
+		func _exit() -> void:
+			# 取消订阅事件
+			CoreSystem.event_bus.unsubscribe("switch_to_dialogue", _on_switch_to_dialogue)
+
+		func _on_switch_to_dialogue(_data := {}) -> void:
+			switch_to(&"dialog")
 
 		func _handle_input(event: InputEvent) -> void:
 			if event.is_action_pressed("ui_accept"):
@@ -108,6 +118,20 @@ class GameState extends BaseStateMachine:
 	class DialogState extends BaseState:
 		func _enter(_msg := {}) -> void:
 			CoreSystem.logger.info("进入对话状态")
+			# 切换到对话场景，使用淡入效果
+			CoreSystem.scene_manager.change_scene_async(
+				"res://scenes/game_dialogue.tscn",
+				{},  # 场景数据
+				true,  # 保存到栈
+				CoreSystem.SceneManager.TransitionEffect.FADE
+			)
+
+		func _handle_input(event: InputEvent) -> void:
+			pass
+
+	class EndDayState extends BaseState:
+		func _enter(_msg := {}) -> void:
+			CoreSystem.logger.info("进入结束一天状态")
 
 		func _handle_input(event: InputEvent) -> void:
 			pass
@@ -116,7 +140,7 @@ class GameState extends BaseStateMachine:
 
 #Region 暂停状态
 class PauseState extends BaseState:
-	func _enter(msg := {}) -> void:
+	func _enter(_msg := {}) -> void:
 		CoreSystem.logger.info("进入暂停状态")
 		CoreSystem.event_bus.subscribe(GameEvents.RESUME_GAME, _on_resume_game)
 		CoreSystem.event_bus.subscribe(GameEvents.RETURN_TO_MENU, _on_return_to_menu)

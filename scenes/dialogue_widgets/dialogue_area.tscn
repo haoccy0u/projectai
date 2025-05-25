@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://cocscjd3k0os"]
+
+[ext_resource type="Script" uid="uid://diwab24ggl7l6" path="res://scenes/dialogue_widgets/dialogue_area.gd" id="1_sqli7"]
+
+[node name="DialogueArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+script = ExtResource("1_sqli7")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.636
+anchor_top = 0.5
+anchor_right = 0.636
+anchor_bottom = 0.5
+offset_left = -112.12
+offset_top = 193.0
+offset_right = 253.88
+offset_bottom = 306.0
+rotation = -1.5708
+theme_override_font_sizes/font_size = 72
+text = "NAME"
+
+[node name="DialogueArea" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.037037
+anchor_right = 1.0
+anchor_bottom = 0.962963
+offset_left = -695.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueArea"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueArea/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogueArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueArea/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Input" type="TextEdit" parent="DialogueArea/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "type what u wanna say here
+"

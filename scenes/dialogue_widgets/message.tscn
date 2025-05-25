@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c3ldxhd20xr41"]
+
+[node name="Message" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.247
+anchor_bottom = 0.141111
+offset_right = -0.240021
+offset_bottom = -0.399994
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SpeakerName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Speaker's Name"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "		text text text text text text text text text text text text text text text text text text text text text text text text,text text text text text text text text text text text text text text text text text text text text text text text text 
+"
+fit_content = true
+scroll_active = false

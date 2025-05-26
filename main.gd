@@ -12,9 +12,6 @@ const SceneManager = CoreSystem.SceneManager
 
 var SCENE_PATHS = [
 	FileDirHandler.get_object_script_dir(self) + "/scenes/main_menu.tscn",
-	FileDirHandler.get_object_script_dir(self) + "/scenes/game_map.tscn",
-	FileDirHandler.get_object_script_dir(self) + "/scenes/game_scene.tscn",
-	FileDirHandler.get_object_script_dir(self) + "/scenes/game_dialogue.tscn",
 ]
 
 #预加载场景

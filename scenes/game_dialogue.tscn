@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhrnyfdm1d1nn"]
+[gd_scene load_steps=3 format=3 uid="uid://bhrnyfdm1d1nn"]
 
 [ext_resource type="Script" uid="uid://c5ad8jmyq0dq" path="res://scripts/dialogue/game_dialogue.gd" id="1_chmx3"]
+[ext_resource type="Script" uid="uid://noh74y4motij" path="res://scripts/dialogue/AI_pipe.gd" id="2_n2on5"]
 
 [node name="Dialogue" type="Node2D"]
 script = ExtResource("1_chmx3")
+
+[node name="AIPipe" type="Node" parent="."]
+script = ExtResource("2_n2on5")
+metadata/_custom_type_script = "uid://noh74y4motij"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

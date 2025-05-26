@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cocscjd3k0os"]
+[gd_scene load_steps=2 format=3 uid="uid://baxlr104xljn0"]
 
-[ext_resource type="Script" uid="uid://diwab24ggl7l6" path="res://scenes/dialogue_widgets/dialogue_area.gd" id="1_sqli7"]
+[ext_resource type="Script" uid="uid://bnjv1qi3max06" path="res://scripts/dialogue/dialogue_area.gd" id="1_wbpp2"]
 
 [node name="DialogueArea" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
-script = ExtResource("1_sqli7")
+script = ExtResource("1_wbpp2")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
@@ -54,8 +54,16 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Input" type="TextEdit" parent="DialogueArea/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Input" type="TextEdit" parent="DialogueArea/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_horizontal = 3
 placeholder_text = "type what u wanna say here
 "
+
+[node name="send" type="Button" parent="DialogueArea/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Send Msg"
